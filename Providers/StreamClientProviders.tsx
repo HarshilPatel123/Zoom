@@ -1,6 +1,6 @@
 "use client"
 
-import { ReactNode, useEffect, useState } from 'react';
+import { ReactNode } from 'react';
 import { tokenProvider } from '@/Actions/stream.actions';
 import { useUser } from '@clerk/nextjs';
 import {
