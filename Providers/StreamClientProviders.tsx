@@ -15,7 +15,7 @@ import Loader from '@/components/ui/Loader';
 const apiKey = process.env.
 NEXT_PUBLIC_STREAM_API_KEY;
 
- const StreamProvider = ({children}) => {
+ const StreamProvider = ({ children }: { children: ReactNode }) => {
 
     const [videoClient, setvideoClient] = useState<StreamVideoClient>()
     const {user, isLoaded} = useUser()
