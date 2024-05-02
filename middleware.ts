@@ -1,19 +1,23 @@
 import { clerkMiddleware, createRouteMatcher } from "@clerk/nextjs/server";
 
-
+// Define the routes to be protected
 const protectRoutes = createRouteMatcher([
     '/',
     '/upcoming',
     '/previous',
     '/personal-room',
-    'meeting(.*)'
-])
+    '/meeting(.*)' // Adjusted to include the correct route
+]);
 
-
-export default clerkMiddleware((auth: () => { (): any; new(): any; protect: { (): void; new(): any; }; }, req: any) => {
-    if(protectRoutes(req)) auth().protect();
+// Apply Clerk authentication middleware to protect routes
+export default clerkMiddleware((auth, req) => {
+    if (protectRoutes(req)) {
+        auth().protect();
+    }
 });
 
+// Export configuration
 export const config = {
-  matcher: ['/((?!.*\\..*|_next).*)', '/', '/(api|trpc)(.*)'],
+    // Define the routes to be excluded from middleware
+    matcher: ['/((?!.*\\..*|_next).*)', '/', '/(api|trpc)(.*)'],
 };

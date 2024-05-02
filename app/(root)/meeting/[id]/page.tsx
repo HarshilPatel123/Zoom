@@ -13,7 +13,7 @@ const Meeting = () => {
   const { id } = useParams();
   const { isLoaded, user } = useUser();
   const { call, isCallLoading } = useGetCallById(id);
-  const [isSetupComplete, setIsSetupComplete] = useState(false);
+  const [isSetupComplete, setIsSetupComplete] = useState<boolean>(false);
 
   if (!isLoaded || isCallLoading) return <Loader />;
 
@@ -23,28 +23,19 @@ const Meeting = () => {
     </p>
   );
 
-  // get more info about custom call type:  https://getstream.io/video/docs/react/guides/configuring-call-types/
-  const notAllowed = call.type === 'invited' && (!user || !call.state.members.find((m) => m.user.id === user.id));
-
-  if (notAllowed) return alert("You are not allowed to join this meeting");
-
   return (
     <main className="h-screen w-full">
-      <StreamCall call={call}>
+      <StreamCall call={call as any}>
         <StreamTheme>
-
-        {!isSetupComplete ? (
-          <MeetingSetup setUp={setIsSetupComplete} />
-        ) : (
-          <MeetingRoom />
-        )}
+          {!isSetupComplete ? (
+            <MeetingSetup setUpComplete={setIsSetupComplete} /> // Corrected prop name
+          ) : (
+            <MeetingRoom />
+          )}
         </StreamTheme>
       </StreamCall>
     </main>
   );
 };
 
-
-
-
-export default Meeting
+export default Meeting;

@@ -5,7 +5,7 @@ import React, { useEffect } from 'react'
 import { useState } from 'react'
 import { Button } from './button'
 
-const MeetingSetup = ({setUp}:{setIsSetUpComplete : (value: boolean) => void} ) => {
+const MeetingSetup = ({setUpComplete}: any ) => {
 
     const [isMic, setIsMic] = useState(false)
     const call = useCall(); 
@@ -41,7 +41,7 @@ const MeetingSetup = ({setUp}:{setIsSetUpComplete : (value: boolean) => void} ) 
       <Button className='rounded-md py-2.5 bg-green-500 px-4 '  onClick={()=> {
         call?.join();
 
-        setUp(true)
+        setUpComplete(true)
       } }>  Join Meeting
 
       </Button>
