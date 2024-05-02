@@ -65,6 +65,7 @@ const MeetingTypeList = () => {
   };
 
   if (!client || !user) return <Loader />;
+  console.log(callDetail)
 
   const meetingLink = `${process.env.NEXT_PUBLIC_BASE_URL}/meeting/${callDetail?.id}`;
 

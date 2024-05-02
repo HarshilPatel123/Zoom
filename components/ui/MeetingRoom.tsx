@@ -1,12 +1,14 @@
+
+
 import { cn } from '@/lib/utils';
 import { CallControls, CallParticipantsList, CallStatsButton, CallingState, PaginatedGridLayout, SpeakerLayout, useCallStateHooks } from '@stream-io/video-react-sdk';
 import React, { useState } from 'react';
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger, DropdownMenuSeparator } from "@/components/ui/dropdown-menu";
 import { LayoutList, Loader, Users } from 'lucide-react';
-import { useRouter } from 'next/router';
+
 import EndCallButton from './EndCallButton';
 import { Button } from './button';
-import { useSearchParams } from 'next/navigation';
+import { useRouter, useSearchParams } from 'next/navigation';
 
 type CallLayoutType = 'grid' | 'speaker-left' | 'speaker-right';
 
